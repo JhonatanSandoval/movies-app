@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="empty" />
+    <string name="movies">Películas</string>
+    <string name="favorites">Favoritos</string>
+    <string name="release_date_x">Fecha de lanzamiento:\n%1$s</string>
+    <string name="results_not_found_for_x">No se encontraron resultados para:\n%1$s</string>
+    <string name="genres">Géneros:</string>
+    <string name="description">Descripción:</string>
+    <string name="error_no_favorites_saved_yet">No tienes favoritos guardados.</string>
+    <string name="error_no_network_available">No hay conexión a internet.</string>
+</resources>

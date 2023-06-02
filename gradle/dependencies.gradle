@@ -1,0 +1,92 @@
+def versions = [
+        //region Platform
+        compileSdk             : 33, // critical. The new SDK limitations must be checked.
+        targetSdk              : 33, // critical. The new SDK limitations must be checked.
+        minSdk                 : 24, // critical. The users distribution must be checked and confirmed with PM.
+        java                   : JavaVersion.VERSION_1_8,
+        kotlin                 : '1.7.10',
+        androidGradlePlugin    : '7.2',
+        appVersionCode         : 1,
+        appVersionName         : '1.0.0',
+        //endregion
+
+        //region Android
+        navigation             : '2.5.2',
+        supportActivity        : '1.5.1',
+        supportAppCompat       : '1.5.0',
+        supportConstraintLayout: '2.1.4',
+        supportCore            : '1.8.0',
+        supportDesign          : '1.6.1',
+        supportFragment        : '1.5.2',
+        swipeRefreshLayout     : "1.1.0",
+        //endregion
+
+        //region Tools
+        hilt                   : '2.43.2',
+        okHttp                 : '4.10.0',
+        retrofit               : '2.6.1',
+        timber                 : '4.7.1',
+        coil                   : "1.0.0",
+        room                   : "2.2.6",
+        //endregion
+
+        //region Test
+        androidXExt            : '1.1.3',
+        archCoreTesting        : '2.1.0',
+        mockito                : '4.6.1',
+        junit                  : '4.13.2',
+        //endregion
+]
+
+def libraries = [
+        //region Platform
+        gradle                  : "com.android.tools.build:gradle:$versions.androidGradlePlugin",
+        kotlinGradlePlugin      : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+        kotlinStdLib            : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
+        kotlinReflect           : "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin",
+        //endregion
+
+        //region Android
+        supportActivity         : "androidx.activity:activity-ktx:$versions.supportActivity",
+        supportAppCompat        : "androidx.appcompat:appcompat:$versions.supportAppCompat",
+        supportConstraintLayout : "androidx.constraintlayout:constraintlayout:$versions.supportConstraintLayout",
+        supportCore             : "androidx.core:core-ktx:$versions.supportCore",
+        supportDesign           : "com.google.android.material:material:$versions.supportDesign",
+        supportFragment         : "androidx.fragment:fragment-ktx:$versions.supportFragment",
+        navigationFragment      : "androidx.navigation:navigation-fragment-ktx:$versions.navigation",
+        navigationUi            : "androidx.navigation:navigation-ui-ktx:$versions.navigation",
+        navigationSafeArgs      : "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation",
+        swipeRefreshLayout      : "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swipeRefreshLayout",
+        //endregion
+
+        //region Tools
+        hilt                    : "com.google.dagger:hilt-android:$versions.hilt",
+        hiltCompiler            : "com.google.dagger:hilt-compiler:$versions.hilt",
+        hiltGradlePlugin        : "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt",
+        timber                  : "com.jakewharton.timber:timber:$versions.timber",
+        okHttpCore              : "com.squareup.okhttp3:okhttp:$versions.okHttp",
+        okHttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$versions.okHttp",
+        retrofit                : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        retrofitConverterGson   : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+        coil                    : "io.coil-kt:coil:$versions.coil",
+        room                    : "androidx.room:room-runtime:$versions.room",
+        roomKtx                 : "androidx.room:room-ktx:$versions.room",
+        roomCompiler            : "androidx.room:room-compiler:$versions.room",
+        //endregion
+
+        //region Test
+        androidXExt             : "androidx.test.ext:junit:$versions.androidXExt",
+        archCoreTesting         : "androidx.arch.core:core-testing:$versions.archCoreTesting",
+        mockitoCore             : "org.mockito:mockito-core:$versions.mockito",
+        mockitoKotlin           : "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0",
+        junit                   : "junit:junit:$versions.junit",
+        testCoroutines          : "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1",
+        //endregion
+]
+
+project.ext {
+    shared = [
+            versions : versions,
+            libraries: libraries,
+    ]
+}

@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+    id 'kotlin-parcelize'
+}
+
+apply from: '../gradle/build-variables.gradle'
+
+android {
+    namespace 'pro.jsandoval.moviesapp.data'
+    compileSdk shared.versions.compileSdk
+
+    defaultConfig {
+        minSdk shared.versions.minSdk
+        targetSdk shared.versions.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/movie/\""
+            testCoverageEnabled true
+        }
+        release {
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/movie/\""
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        buildConfig = true
+    }
+}
+
+dependencies {
+    // Modules
+    implementation project(":model")
+    implementation project(":utils")
+
+    // Okhttp / Retrofit
+    implementation shared.libraries.okHttpCore
+    implementation shared.libraries.okHttpLoggingInterceptor
+    implementation shared.libraries.retrofitConverterGson
+
+    // Database
+    implementation shared.libraries.room
+    implementation shared.libraries.roomKtx
+    kapt shared.libraries.roomCompiler
+
+    // Dependency Injection
+    implementation shared.libraries.hilt
+    kapt shared.libraries.hiltCompiler
+
+    // Tools
+    implementation shared.libraries.timber
+}

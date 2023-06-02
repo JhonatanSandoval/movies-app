@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    namespace 'pro.jsandoval.moviesapp.movies'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    // Modules
+    implementation project(":model")
+    implementation project(":movies-data")
+    implementation project(":navigation")
+    implementation project(":resources")
+    implementation project(":utils")
+
+    // Dependency Injection
+    implementation shared.libraries.hilt
+    kapt shared.libraries.hiltCompiler
+
+    // Support Libraries
+    implementation shared.libraries.supportActivity
+    implementation shared.libraries.supportAppCompat
+    implementation shared.libraries.supportConstraintLayout
+    implementation shared.libraries.supportCore
+    implementation shared.libraries.supportDesign
+    implementation shared.libraries.navigationUi
+    implementation shared.libraries.navigationFragment
+    implementation shared.libraries.swipeRefreshLayout
+
+    // Tools
+    implementation shared.libraries.timber
+    implementation shared.libraries.coil
+
+    // Testing
+    testImplementation project(":utils")
+    testImplementation shared.libraries.archCoreTesting
+    testImplementation shared.libraries.androidXExt
+    testImplementation shared.libraries.mockitoCore
+    testImplementation shared.libraries.mockitoKotlin
+    testImplementation shared.libraries.junit
+    testImplementation shared.libraries.testCoroutines
+}

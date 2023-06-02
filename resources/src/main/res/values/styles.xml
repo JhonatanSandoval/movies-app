@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MoviesApp" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.MoviesApp" parent="Base.Theme.MoviesApp" />
+
+    <style name="Common.Body" parent="Theme.MoviesApp">
+        <item name="android:textSize">@dimen/medium_text</item>
+    </style>
+
+    <style name="Common.Body.Italic" parent="Common.Body">
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="Common.Body.Bold" parent="Common.Body">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Movie.Title" parent="Common.Body.Bold" />
+
+    <style name="Movie.ReleaseDate" parent="Common.Body.Italic">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="Movie.Subtitle" parent="Common.Body.Bold">
+        <item name="android:textSize">@dimen/large_text</item>
+    </style>
+
+    <style name="Movie.Description" parent="Common.Body" />
+
+    <style name="Movie.CirclePoster" parent="Theme.MoviesApp">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="ErrorMessage" parent="Common.Body">
+        <item name="android:textSize">@dimen/large_text</item>
+        <item name="android:layout_marginStart">@dimen/extra_large_space</item>
+        <item name="android:layout_marginEnd">@dimen/extra_large_space</item>
+    </style>
+
+    <style name="RatingBar" parent="Theme.MoviesApp">
+        <item name="colorControlNormal">@color/gray</item>
+        <item name="colorControlActivated">@color/yellow</item>
+    </style>
+
+
+</resources>

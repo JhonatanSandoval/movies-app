@@ -1,0 +1,64 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+    id 'kotlin-parcelize'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'pro.jsandoval.movieapp.moviesdetails'
+    compileSdk shared.versions.compileSdk
+
+    defaultConfig {
+        minSdk shared.versions.minSdk
+        targetSdk shared.versions.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    // Modules
+    implementation project(":movies-data")
+    implementation project(":model")
+    implementation project(":resources")
+    implementation project(":utils")
+
+    // Support Libraries
+    implementation shared.libraries.supportActivity
+    implementation shared.libraries.supportAppCompat
+    implementation shared.libraries.supportConstraintLayout
+    implementation shared.libraries.supportCore
+    implementation shared.libraries.supportDesign
+    implementation shared.libraries.navigationUi
+    implementation shared.libraries.navigationFragment
+    implementation shared.libraries.swipeRefreshLayout
+
+    // Dependency Injection
+    implementation shared.libraries.hilt
+    kapt shared.libraries.hiltCompiler
+
+    // Tools
+    implementation shared.libraries.coil
+
+    // Testing
+    testImplementation project(":utils")
+    testImplementation shared.libraries.archCoreTesting
+    testImplementation shared.libraries.androidXExt
+    testImplementation shared.libraries.mockitoCore
+    testImplementation shared.libraries.mockitoKotlin
+    testImplementation shared.libraries.junit
+    testImplementation shared.libraries.testCoroutines
+}

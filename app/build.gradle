@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+    id 'kotlin-parcelize'
+    id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    namespace 'pro.jsandoval.moviesapp'
+    compileSdk shared.versions.compileSdk
+
+    defaultConfig {
+        applicationId "pro.jsandoval.moviesapp"
+        minSdk shared.versions.minSdk
+        targetSdk shared.versions.targetSdk
+        versionCode shared.versions.appVersionCode
+        versionName shared.versions.appVersionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
+}
+
+dependencies {
+    // Modules
+    implementation project(":navigation")
+    implementation project(":resources")
+    implementation project(":utils")
+    implementation project(":features:movies")
+    implementation project(":features:movies-details")
+    implementation project(":features:favorites")
+
+    // Support Libraries
+    implementation shared.libraries.supportActivity
+    implementation shared.libraries.supportAppCompat
+    implementation shared.libraries.supportConstraintLayout
+    implementation shared.libraries.supportCore
+    implementation shared.libraries.supportDesign
+    implementation shared.libraries.navigationUi
+    implementation shared.libraries.navigationFragment
+    implementation shared.libraries.swipeRefreshLayout
+
+    // Dependency Injection
+    implementation shared.libraries.hilt
+    kapt shared.libraries.hiltCompiler
+
+    // Okhttp / Retrofit
+    implementation shared.libraries.okHttpCore
+    implementation shared.libraries.okHttpLoggingInterceptor
+    implementation shared.libraries.retrofitConverterGson
+
+    // Tools
+    implementation shared.libraries.timber
+    implementation shared.libraries.coil
+
+    // Database
+    implementation shared.libraries.room
+    implementation shared.libraries.roomKtx
+    kapt shared.libraries.roomCompiler
+}
